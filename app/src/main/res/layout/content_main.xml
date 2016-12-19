@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
-    <com.jd.mrd.viewdependency.WatchEditText
+    <com.android.yhthu.viewdependency.view.WatchEditText
         android:id="@+id/edit_query_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:hint="商品编码"
         android:inputType="number"/>
 
-    <com.jd.mrd.viewdependency.WatchEditText
+    <com.android.yhthu.viewdependency.view.WatchEditText
         android:id="@+id/edit_query_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:hint="储位"
         android:inputType="number"/>
 
-    <com.jd.mrd.viewdependency.WatchEditText
+    <com.android.yhthu.viewdependency.view.WatchEditText
         android:id="@+id/edit_query_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,21 +41,21 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-        <com.jd.mrd.viewdependency.WatchButton
+        <com.android.yhthu.viewdependency.view.WatchButton
             android:id="@+id/search_button_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="buttonSearch1"
             android:text="确认" />
 
-        <com.jd.mrd.viewdependency.WatchButton
+        <com.android.yhthu.viewdependency.view.WatchButton
             android:id="@+id/search_button_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="buttonSearch2"
             android:text="跳过" />
 
-        <com.jd.mrd.viewdependency.WatchButton
+        <com.android.yhthu.viewdependency.view.WatchButton
             android:id="@+id/search_button_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

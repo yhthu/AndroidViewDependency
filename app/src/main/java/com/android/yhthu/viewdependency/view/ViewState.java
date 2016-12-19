@@ -1,4 +1,4 @@
-package com.android.yhthu.viewdependency.state;
+package com.android.yhthu.viewdependency.view;
 
 /**
  * 控件状态

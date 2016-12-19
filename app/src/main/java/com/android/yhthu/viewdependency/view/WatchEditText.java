@@ -10,7 +10,6 @@ import com.android.yhthu.viewdependency.state.Complete;
 import com.android.yhthu.viewdependency.state.Enter;
 import com.android.yhthu.viewdependency.state.Operator;
 import com.android.yhthu.viewdependency.state.Verify;
-import com.android.yhthu.viewdependency.state.ViewState;
 
 /**
  * 被依赖EditText（输入）
