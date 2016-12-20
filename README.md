@@ -18,7 +18,7 @@ Android控件状态依赖
 **使用方法：**
 ---------
 
-由于目前未上传jcenter，仅供参考代码。
+由于目前未上传MrdAndroidLibrary，仅供参考代码。
 
  1. 布局文件引用WatchEditText和WatchButton
 ```
