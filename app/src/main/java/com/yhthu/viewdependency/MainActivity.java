@@ -1,4 +1,4 @@
-package com.android.yhthu.viewdependency;
+package com.yhthu.viewdependency;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,14 +8,15 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.yhthu.viewdependency.annotation.ViewDependency;
-import com.android.yhthu.viewdependency.annotation.ViewName;
-import com.android.yhthu.viewdependency.view.WatchButton;
-import com.android.yhthu.viewdependency.view.WatchEditText;
-import com.jd.mrd.viewdependency.R;
+import com.yhthu.viewdependency.R;
+import com.yhthu.viewdependency.annotation.ViewDependency;
+import com.yhthu.viewdependency.annotation.ViewName;
+import com.yhthu.viewdependency.view.WatchButton;
+import com.yhthu.viewdependency.view.WatchEditText;
 
 /**
  * 控件状态依赖Demo
+ *
  * @author yanghao1
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener {
@@ -81,19 +82,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_NEXT && v == editQuery1
-                && (query1Str = editQuery1.getText().toString()).isEmpty()) {
+                && !(query1Str = editQuery1.getText().toString()).isEmpty()) {
             if (query1Str.equals("12345")) {
                 editQuery1.complete();
                 return true;
             }
         } else if (actionId == EditorInfo.IME_ACTION_NEXT && v == editQuery2
-                && (query2Str = editQuery1.getText().toString()).isEmpty()) {
+                && !(query2Str = editQuery1.getText().toString()).isEmpty()) {
             if (query2Str.equals("67890")) {
                 editQuery2.complete();
                 return true;
             }
         } else if (actionId == EditorInfo.IME_ACTION_NEXT && v == editQuery3
-                && (query3Str = editQuery1.getText().toString()).isEmpty()) {
+                && !(query3Str = editQuery1.getText().toString()).isEmpty()) {
             if (Integer.parseInt(query3Str) < 10) {
                 editQuery3.complete();
                 return true;

@@ -1,4 +1,4 @@
-package com.android.yhthu.viewdependency.state;
+package com.yhthu.viewdependency.state;
 
 import android.content.Context;
 

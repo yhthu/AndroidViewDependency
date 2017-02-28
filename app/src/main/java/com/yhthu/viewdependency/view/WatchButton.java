@@ -1,4 +1,4 @@
-package com.android.yhthu.viewdependency.view;
+package com.yhthu.viewdependency.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.yhthu.viewdependency.annotation.ViewDependency;
-import com.android.yhthu.viewdependency.annotation.ViewName;
+import com.yhthu.viewdependency.annotation.ViewDependency;
+import com.yhthu.viewdependency.annotation.ViewName;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

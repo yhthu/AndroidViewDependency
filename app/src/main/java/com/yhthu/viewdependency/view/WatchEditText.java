@@ -1,4 +1,4 @@
-package com.android.yhthu.viewdependency.view;
+package com.yhthu.viewdependency.view;
 
 import android.content.Context;
 import android.text.Editable;
@@ -6,10 +6,11 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-import com.android.yhthu.viewdependency.state.Complete;
-import com.android.yhthu.viewdependency.state.Enter;
-import com.android.yhthu.viewdependency.state.Operator;
-import com.android.yhthu.viewdependency.state.Verify;
+import com.yhthu.viewdependency.state.Complete;
+import com.yhthu.viewdependency.state.Enter;
+import com.yhthu.viewdependency.state.Operator;
+import com.yhthu.viewdependency.state.Verify;
+import com.yhthu.viewdependency.view.ViewState;
 
 /**
  * 被依赖EditText（输入）
