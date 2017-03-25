@@ -19,7 +19,8 @@ import com.yhthu.viewdependency.view.WatchEditText;
  *
  * @author yanghao1
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener {
+public class MainActivity extends AppCompatActivity implements
+        View.OnClickListener, TextView.OnEditorActionListener, View.OnKeyListener {
 
     @ViewName("商品编码")
     private WatchEditText editQuery1;
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSearch1.setOnClickListener(this);
         buttonSearch2.setOnClickListener(this);
         buttonSearch3.setOnClickListener(this);
+
+        buttonSearch1.setOnKeyListener(this);
+        buttonSearch2.setOnKeyListener(this);
+        buttonSearch3.setOnKeyListener(this);
     }
 
     @Override
@@ -85,20 +90,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 && !(query1Str = editQuery1.getText().toString()).isEmpty()) {
             if (query1Str.equals("12345")) {
                 editQuery1.complete();
-                return true;
             }
         } else if (actionId == EditorInfo.IME_ACTION_NEXT && v == editQuery2
-                && !(query2Str = editQuery1.getText().toString()).isEmpty()) {
+                && !(query2Str = editQuery2.getText().toString()).isEmpty()) {
             if (query2Str.equals("67890")) {
                 editQuery2.complete();
-                return true;
             }
         } else if (actionId == EditorInfo.IME_ACTION_NEXT && v == editQuery3
-                && !(query3Str = editQuery1.getText().toString()).isEmpty()) {
+                && !(query3Str = editQuery3.getText().toString()).isEmpty()) {
             if (Integer.parseInt(query3Str) < 10) {
                 editQuery3.complete();
-                return true;
             }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+            if (v == buttonSearch1) {
+                Toast.makeText(this, "调接口", Toast.LENGTH_SHORT).show();
+            } else if (v == buttonSearch2) {
+                Toast.makeText(this, "跳下一页", Toast.LENGTH_SHORT).show();
+            } else if (v == buttonSearch3) {
+                Toast.makeText(this, "登记缺货", Toast.LENGTH_SHORT).show();
+            }
+            return true;
         }
         return false;
     }

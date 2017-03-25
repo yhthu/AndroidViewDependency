@@ -1,7 +1,5 @@
 package com.yhthu.viewdependency.annotation;
 
-import com.yhthu.viewdependency.annotation.ViewName;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

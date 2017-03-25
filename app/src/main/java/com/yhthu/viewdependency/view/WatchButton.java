@@ -3,6 +3,7 @@ package com.yhthu.viewdependency.view;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -48,33 +49,27 @@ public class WatchButton extends Button {
         getAnnotation((String) getTag());
     }
 
-    /**
-     * 根据依赖控件状态判定是否拦截OnClick事件
-     *
-     * @param event
-     * @return
-     */
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            for (String tagStr : dependency) {
-                View contentView = (((Activity) context).findViewById(android.R.id.content));
-                WatchEditText watchEditText = (WatchEditText) contentView.findViewWithTag(tagStr);
-                try {
-                    Field watchEditTextField = aClass.getDeclaredField(((String) watchEditText.getTag()));
-                    Annotation watchButtonAnnotation = watchEditTextField.getAnnotation(ViewName.class);
-                    if (watchButtonAnnotation != null) {
-                        if (!watchEditText.getOperator().operator(operatorName,
-                                ((ViewName) watchButtonAnnotation).value())) {
-                            return true;
-                        }
-                    }
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                }
+            // 如果不允许继续分发，则拦截事件
+            if (dispatchAnnotation()) {
+                return true;
             }
         }
-        return super.onTouchEvent(event);
+        return super.dispatchTouchEvent(event);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER
+                && event.getAction() == KeyEvent.ACTION_UP) {
+            // 如果不允许继续分发，则拦截事件
+            if (dispatchAnnotation()) {
+                return true;
+            }
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     /**
@@ -93,5 +88,32 @@ public class WatchButton extends Button {
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 处理注解
+     *
+     * @return
+     */
+    private boolean dispatchAnnotation() {
+        for (String tagStr : dependency) {
+            View contentView = (((Activity) context).findViewById(android.R.id.content));
+            WatchEditText watchEditText = (WatchEditText) contentView.findViewWithTag(tagStr);
+            try {
+                Field watchEditTextField = aClass.getDeclaredField(((String) watchEditText.getTag()));
+                Annotation watchButtonAnnotation = watchEditTextField.getAnnotation(ViewName.class);
+                if (watchButtonAnnotation != null) {
+                    // 可以执行操作：事件继续分发；不可以执行操作：事件拦截（返回true）
+                    if (!watchEditText.getOperator().operator(operatorName,
+                            ((ViewName) watchButtonAnnotation).value())) {
+                        return true;
+                    }
+                }
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
     }
 }

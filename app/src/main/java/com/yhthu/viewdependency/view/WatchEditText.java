@@ -10,7 +10,6 @@ import com.yhthu.viewdependency.state.Complete;
 import com.yhthu.viewdependency.state.Enter;
 import com.yhthu.viewdependency.state.Operator;
 import com.yhthu.viewdependency.state.Verify;
-import com.yhthu.viewdependency.view.ViewState;
 
 /**
  * 被依赖EditText（输入）
